@@ -7,4 +7,4 @@ COPY ./dante.conf /app/dante.conf
 
 EXPOSE 1080
 
-CMD ["danted", "-f", "/app/dante.conf"]
+ENTRYPOINT ["danted", "-f", "/app/dante.conf"]
