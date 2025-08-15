@@ -1,10 +1,8 @@
-FROM docker.io/debian:bookworm
+FROM docker.io/alpine:3.22.1
 
-RUN apt update
-RUN apt install -y dante-server
-
+RUN apk add --no-cache dante-server
 COPY ./dante.conf /app/dante.conf
 
 EXPOSE 1080
 
-ENTRYPOINT ["danted", "-f", "/app/dante.conf"]
+ENTRYPOINT ["sockd", "-f", "/app/dante.conf"]
