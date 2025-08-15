@@ -1,8 +1,10 @@
 FROM docker.io/alpine:3.22.1
 
 RUN apk add --no-cache dante-server
-COPY ./dante.conf /app/dante.conf
+
+COPY ./dante_env.conf /app/dante_env.conf
+COPY ./entrypoint.sh /app/entrypoint.sh
 
 EXPOSE 1080
 
-ENTRYPOINT ["sockd", "-f", "/app/dante.conf"]
+ENTRYPOINT ["sh", "/app/entrypoint.sh"]
